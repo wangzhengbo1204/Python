@@ -1,0 +1,12 @@
+main testlogging.py(48) 2012-11-19 14:54:30,003 error:msg
+main testlogging.py(49) 2012-11-19 14:54:30,003 critical:msg
+main testlogging.py(48) 2012-11-19 14:54:35,015 error:msg
+main testlogging.py(49) 2012-11-19 14:54:35,015 critical:msg
+main testlogging.py(48) 2012-11-19 14:54:40,017 error:msg
+main testlogging.py(49) 2012-11-19 14:54:40,017 critical:msg
+main testlogging.py(48) 2012-11-19 14:54:45,023 error:msg
+main testlogging.py(49) 2012-11-19 14:54:45,023 critical:msg
+main testlogging.py(48) 2012-11-19 14:54:50,023 error:msg
+main testlogging.py(49) 2012-11-19 14:54:50,023 critical:msg
+main testlogging.py(48) 2012-11-19 14:54:55,030 error:msg
+main testlogging.py(49) 2012-11-19 14:54:55,030 critical:msg

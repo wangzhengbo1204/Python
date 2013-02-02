@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ParsingConfig">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MinPassedRatio" type="xs:decimal">
+					<xs:annotation>
+						<xs:documentation> the parsed rows ratio is bigger than this value, the file would be set 'parsed success'</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Encoding" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Can be Default, UTF-8, UTF-16, ASCII, etc </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="IsCreateCleanFile" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>True to generate clean file </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Pretreatment" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Delimiter"/>
+							<xs:choice>
+								<xs:element name="PreSpecial">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="Function"/>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="PreExcelSetting" minOccurs="0">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="Orientation" type="xs:integer">
+												<xs:annotation>
+													<xs:documentation>Only for excel file, the orientation of contents could be portrait (0) or landscape (1)</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="PreSheet" maxOccurs="unbounded">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Index"/>
+														<xs:element name="PreRegion">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="StartLine">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="RowIndex"/>
+																				<xs:element name="ColIndex"/>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="EndLine">
+																		<xs:complexType>
+																			<xs:choice>
+																				<xs:element name="MaxBlankNumber" type="xs:int" minOccurs="0"/>
+																				<xs:element name="EndLineRegex" minOccurs="0">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="AbsoluteExpression"/>
+																							<xs:element name="RegexExp"/>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																			</xs:choice>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="Step" minOccurs="0"/>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="IdtSetting" maxOccurs="unbounded">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="ColSetting" maxOccurs="unbounded">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="CellStyle" minOccurs="0" maxOccurs="unbounded">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="ValuePattern" maxOccurs="unbounded">
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="Location" minOccurs="0">
+																											<xs:complexType>
+																												<xs:choice>
+																													<xs:element name="AbsoluteExpression" type="xs:string">
+																														<xs:annotation>
+																															<xs:documentation>Sample: 1, AB </xs:documentation>
+																														</xs:annotation>
+																													</xs:element>
+																													<xs:element name="FixedLocation">
+																														<xs:annotation>
+																															<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																														</xs:annotation>
+																														<xs:complexType>
+																															<xs:sequence>
+																																<xs:element name="RowNumber" type="xs:int"/>
+																																<xs:element name="ColumnNumber" type="xs:int"/>
+																															</xs:sequence>
+																														</xs:complexType>
+																													</xs:element>
+																												</xs:choice>
+																											</xs:complexType>
+																										</xs:element>
+																										<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																										<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>split by',' </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																				<xs:element name="LineStyle" minOccurs="0" maxOccurs="unbounded">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="ValuePattern">
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="Location" minOccurs="0">
+																											<xs:complexType>
+																												<xs:choice>
+																													<xs:element name="AbsoluteExpression" type="xs:string">
+																														<xs:annotation>
+																															<xs:documentation>Sample: 1, AB </xs:documentation>
+																														</xs:annotation>
+																													</xs:element>
+																													<xs:element name="FixedLocation">
+																														<xs:annotation>
+																															<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																														</xs:annotation>
+																														<xs:complexType>
+																															<xs:sequence>
+																																<xs:element name="RowNumber" type="xs:int"/>
+																																<xs:element name="ColumnNumber" type="xs:int"/>
+																															</xs:sequence>
+																														</xs:complexType>
+																													</xs:element>
+																												</xs:choice>
+																											</xs:complexType>
+																										</xs:element>
+																										<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																										<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>split by',' </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																				<xs:element name="PointStyle" minOccurs="0" maxOccurs="unbounded">
+																					<xs:annotation>
+																						<xs:documentation>at present, don't support</xs:documentation>
+																					</xs:annotation>
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="ValuePattern">
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="Location" minOccurs="0">
+																											<xs:complexType>
+																												<xs:choice>
+																													<xs:element name="AbsoluteExpression" type="xs:string">
+																														<xs:annotation>
+																															<xs:documentation>Sample: 1, AB </xs:documentation>
+																														</xs:annotation>
+																													</xs:element>
+																													<xs:element name="FixedLocation">
+																														<xs:annotation>
+																															<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																														</xs:annotation>
+																														<xs:complexType>
+																															<xs:sequence>
+																																<xs:element name="RowNumber" type="xs:int"/>
+																																<xs:element name="ColumnNumber" type="xs:int"/>
+																															</xs:sequence>
+																														</xs:complexType>
+																													</xs:element>
+																												</xs:choice>
+																											</xs:complexType>
+																										</xs:element>
+																										<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																										<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>split by',' </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="RowSetting" maxOccurs="unbounded">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="CellStyle" minOccurs="0">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="ValuePattern" maxOccurs="unbounded">
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="Location" minOccurs="0">
+																											<xs:complexType>
+																												<xs:choice>
+																													<xs:element name="AbsoluteExpression" type="xs:string">
+																														<xs:annotation>
+																															<xs:documentation>Sample: 1, AB </xs:documentation>
+																														</xs:annotation>
+																													</xs:element>
+																													<xs:element name="FixedLocation">
+																														<xs:annotation>
+																															<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																														</xs:annotation>
+																														<xs:complexType>
+																															<xs:sequence>
+																																<xs:element name="RowNumber" type="xs:int"/>
+																																<xs:element name="ColumnNumber" type="xs:int"/>
+																															</xs:sequence>
+																														</xs:complexType>
+																													</xs:element>
+																												</xs:choice>
+																											</xs:complexType>
+																										</xs:element>
+																										<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																										<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>split by',' </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																				<xs:element name="LineStyle" minOccurs="0">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="ValuePattern">
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="Location" minOccurs="0">
+																											<xs:complexType>
+																												<xs:choice>
+																													<xs:element name="AbsoluteExpression" type="xs:string">
+																														<xs:annotation>
+																															<xs:documentation>Sample: 1, AB </xs:documentation>
+																														</xs:annotation>
+																													</xs:element>
+																													<xs:element name="FixedLocation">
+																														<xs:annotation>
+																															<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																														</xs:annotation>
+																														<xs:complexType>
+																															<xs:sequence>
+																																<xs:element name="RowNumber" type="xs:int"/>
+																																<xs:element name="ColumnNumber" type="xs:int"/>
+																															</xs:sequence>
+																														</xs:complexType>
+																													</xs:element>
+																												</xs:choice>
+																											</xs:complexType>
+																										</xs:element>
+																										<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																										<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>split by',' </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																				<xs:element name="PointStyle" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>at present, don't support</xs:documentation>
+																					</xs:annotation>
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="ValuePattern">
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="Location" minOccurs="0">
+																											<xs:complexType>
+																												<xs:choice>
+																													<xs:element name="AbsoluteExpression" type="xs:string">
+																														<xs:annotation>
+																															<xs:documentation>Sample: 1, AB </xs:documentation>
+																														</xs:annotation>
+																													</xs:element>
+																													<xs:element name="FixedLocation">
+																														<xs:annotation>
+																															<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																														</xs:annotation>
+																														<xs:complexType>
+																															<xs:sequence>
+																																<xs:element name="RowNumber" type="xs:int"/>
+																																<xs:element name="ColumnNumber" type="xs:int"/>
+																															</xs:sequence>
+																														</xs:complexType>
+																													</xs:element>
+																												</xs:choice>
+																											</xs:complexType>
+																										</xs:element>
+																										<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																										<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																											<xs:annotation>
+																												<xs:documentation>split by',' </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="PointSetting">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="ValuePattern">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="Location" minOccurs="0">
+																								<xs:complexType>
+																									<xs:choice>
+																										<xs:element name="AbsoluteExpression" type="xs:string">
+																											<xs:annotation>
+																												<xs:documentation>Sample: 1, AB </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="FixedLocation">
+																											<xs:annotation>
+																												<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																											</xs:annotation>
+																											<xs:complexType>
+																												<xs:sequence>
+																													<xs:element name="RowNumber" type="xs:int"/>
+																													<xs:element name="ColumnNumber" type="xs:int"/>
+																												</xs:sequence>
+																											</xs:complexType>
+																										</xs:element>
+																									</xs:choice>
+																								</xs:complexType>
+																							</xs:element>
+																							<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																							<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																								<xs:annotation>
+																									<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																							<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																								<xs:annotation>
+																									<xs:documentation>split by',' </xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:choice>
+					<xs:element name="ExcelSetting" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Orientation" type="xs:integer">
+									<xs:annotation>
+										<xs:documentation>Only for excel file, the orientation of contents could be portrait (0) or landscape (1)</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Sheet" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="Index"/>
+											<xs:element name="Region">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="StartLineNo" type="xs:int"/>
+														<xs:element name="EndLine">
+															<xs:complexType>
+																<xs:choice>
+																	<xs:element name="MaxBlankNumber" type="xs:int" minOccurs="0"/>
+																	<xs:element name="EndLineRegex" minOccurs="0">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="AbsoluteExpression"/>
+																				<xs:element name="RegexExp"/>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:choice>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="Step" minOccurs="0"/>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="GroupSetting" maxOccurs="unbounded">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="KeySetting">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="DataField" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation>Check table DataPoint for ref</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="ValuePattern">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="Location" minOccurs="0">
+																								<xs:complexType>
+																									<xs:choice>
+																										<xs:element name="AbsoluteExpression" type="xs:string">
+																											<xs:annotation>
+																												<xs:documentation>Sample: 1, AB </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="FixedLocation">
+																											<xs:annotation>
+																												<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																											</xs:annotation>
+																											<xs:complexType>
+																												<xs:sequence>
+																													<xs:element name="RowNumber" type="xs:int"/>
+																													<xs:element name="ColumnNumber" type="xs:int"/>
+																												</xs:sequence>
+																											</xs:complexType>
+																										</xs:element>
+																									</xs:choice>
+																								</xs:complexType>
+																							</xs:element>
+																							<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																							<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																								<xs:annotation>
+																									<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																							<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																								<xs:annotation>
+																									<xs:documentation>split by',' </xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																			</xs:sequence>
+																			<xs:attribute name="DFid" type="xs:string" use="required"/>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="ValueSetting" minOccurs="0">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="DataField" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation>Check table DataPoint for ref</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="ValuePattern">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="Location" minOccurs="0">
+																								<xs:complexType>
+																									<xs:choice>
+																										<xs:element name="AbsoluteExpression" type="xs:string">
+																											<xs:annotation>
+																												<xs:documentation>Sample: 1, AB </xs:documentation>
+																											</xs:annotation>
+																										</xs:element>
+																										<xs:element name="FixedLocation">
+																											<xs:annotation>
+																												<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																											</xs:annotation>
+																											<xs:complexType>
+																												<xs:sequence>
+																													<xs:element name="RowNumber" type="xs:int"/>
+																													<xs:element name="ColumnNumber" type="xs:int"/>
+																												</xs:sequence>
+																											</xs:complexType>
+																										</xs:element>
+																									</xs:choice>
+																								</xs:complexType>
+																							</xs:element>
+																							<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																							<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																								<xs:annotation>
+																									<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																							<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																								<xs:annotation>
+																									<xs:documentation>split by',' </xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																			</xs:sequence>
+																			<xs:attribute name="DFid" type="xs:string" use="required"/>
+																			<xs:attribute name="DUid" type="xs:string" use="required"/>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="TxtSetting" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Orientation"/>
+								<xs:element name="Delimiter" type="xs:string"/>
+								<xs:element name="QuoteChar" type="xs:string">
+									<xs:annotation>
+										<xs:documentation>Text qualifier could be " " " or "  ' " default is " " "</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Region">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="StartLineNo" type="xs:integer"/>
+											<xs:element name="EndLine">
+												<xs:complexType>
+													<xs:choice>
+														<xs:element name="MaxBlankNumber" type="xs:int" minOccurs="0"/>
+														<xs:element name="EndLineRegex" minOccurs="0">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="AbsoluteExpression"/>
+																	<xs:element name="RegexExp"/>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="GroupSetting" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="KeySetting">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="DataField" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation>Check table DataPoint for ref</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="ValuePattern">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="Location" minOccurs="0">
+																					<xs:complexType>
+																						<xs:choice>
+																							<xs:element name="AbsoluteExpression" type="xs:string">
+																								<xs:annotation>
+																									<xs:documentation>Sample: 1, AB </xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																							<xs:element name="FixedLocation">
+																								<xs:annotation>
+																									<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																								</xs:annotation>
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="RowNumber" type="xs:int"/>
+																										<xs:element name="ColumnNumber" type="xs:int"/>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																						</xs:choice>
+																					</xs:complexType>
+																				</xs:element>
+																				<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																				<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>split by',' </xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+																<xs:attribute name="DFid" type="xs:string" use="required"/>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="ValueSetting" minOccurs="0">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="DataField" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation>Check table DataPoint for ref</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="ValuePattern">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="Location" minOccurs="0">
+																					<xs:complexType>
+																						<xs:choice>
+																							<xs:element name="AbsoluteExpression" type="xs:string">
+																								<xs:annotation>
+																									<xs:documentation>Sample: 1, AB </xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																							<xs:element name="FixedLocation">
+																								<xs:annotation>
+																									<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																								</xs:annotation>
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="RowNumber" type="xs:int"/>
+																										<xs:element name="ColumnNumber" type="xs:int"/>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																						</xs:choice>
+																					</xs:complexType>
+																				</xs:element>
+																				<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																				<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>split by',' </xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+																<xs:attribute name="DFid" type="xs:string" use="required"/>
+																<xs:attribute name="DUid" type="xs:string" use="required"/>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="XmlSetting">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="XSLTPath"/>
+								<xs:element name="Delimiter"/>
+								<xs:element name="LineBreak"/>
+								<xs:choice>
+									<xs:element name="ExcelSetting" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Orientation" type="xs:integer">
+													<xs:annotation>
+														<xs:documentation>Only for excel file, the orientation of contents could be portrait (0) or landscape (1)</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Sheet" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Index"/>
+															<xs:element name="Region">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="StartLineNo" type="xs:integer"/>
+																		<xs:element name="EndLine">
+																			<xs:complexType>
+																				<xs:choice>
+																					<xs:element name="MaxBlankNumber" type="xs:int" minOccurs="0"/>
+																					<xs:element name="EndLineRegex" minOccurs="0">
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="AbsoluteExpression"/>
+																								<xs:element name="RegexExp"/>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:choice>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="GroupSetting" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="KeySetting">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="DataField" maxOccurs="unbounded">
+																						<xs:annotation>
+																							<xs:documentation>Check table DataPoint for ref</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="ValuePattern">
+																									<xs:complexType>
+																										<xs:sequence>
+																											<xs:element name="Location">
+																												<xs:complexType>
+																													<xs:choice>
+																														<xs:element name="AbsoluteExpression" type="xs:string">
+																															<xs:annotation>
+																																<xs:documentation>Sample: 1, AB </xs:documentation>
+																															</xs:annotation>
+																														</xs:element>
+																														<xs:element name="FixedLocation">
+																															<xs:annotation>
+																																<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																															</xs:annotation>
+																															<xs:complexType>
+																																<xs:sequence>
+																																	<xs:element name="RowNumber" type="xs:int"/>
+																																	<xs:element name="ColumnNumber" type="xs:int"/>
+																																</xs:sequence>
+																															</xs:complexType>
+																														</xs:element>
+																													</xs:choice>
+																												</xs:complexType>
+																											</xs:element>
+																											<xs:element name="DataFormatType"/>
+																											<xs:element name="DataFormat" type="xs:string">
+																												<xs:annotation>
+																													<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="InvalidValues" type="xs:string">
+																												<xs:annotation>
+																													<xs:documentation>split by',' </xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																										</xs:sequence>
+																									</xs:complexType>
+																								</xs:element>
+																							</xs:sequence>
+																							<xs:attribute name="DFid" type="xs:string" use="required"/>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element name="ValueSetting" minOccurs="0">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="DataField" maxOccurs="unbounded">
+																						<xs:annotation>
+																							<xs:documentation>Check table DataPoint for ref</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="ValuePattern">
+																									<xs:complexType>
+																										<xs:sequence>
+																											<xs:element name="Location" minOccurs="0">
+																												<xs:complexType>
+																													<xs:choice>
+																														<xs:element name="AbsoluteExpression" type="xs:string">
+																															<xs:annotation>
+																																<xs:documentation>Sample: 1, AB </xs:documentation>
+																															</xs:annotation>
+																														</xs:element>
+																														<xs:element name="FixedLocation">
+																															<xs:annotation>
+																																<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																															</xs:annotation>
+																															<xs:complexType>
+																																<xs:sequence>
+																																	<xs:element name="RowNumber" type="xs:int"/>
+																																	<xs:element name="ColumnNumber" type="xs:int"/>
+																																</xs:sequence>
+																															</xs:complexType>
+																														</xs:element>
+																													</xs:choice>
+																												</xs:complexType>
+																											</xs:element>
+																											<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																											<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																												<xs:annotation>
+																													<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																												<xs:annotation>
+																													<xs:documentation>split by',' </xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																										</xs:sequence>
+																									</xs:complexType>
+																								</xs:element>
+																							</xs:sequence>
+																							<xs:attribute name="DFid" type="xs:string" use="required"/>
+																							<xs:attribute name="DUid" type="xs:string" use="required"/>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="TxtSetting" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Orientation"/>
+												<xs:element name="Delimiter" type="xs:string"/>
+												<xs:element name="QuoteChar" type="xs:string">
+													<xs:annotation>
+														<xs:documentation>Text qualifier could be " " " or "  ' " default is " " "</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Region">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="StartLineNo" type="xs:integer"/>
+															<xs:element name="EndLine">
+																<xs:complexType>
+																	<xs:choice>
+																		<xs:element name="MaxBlankNumber" type="xs:int" minOccurs="0"/>
+																		<xs:element name="EndLineRegex" minOccurs="0">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="AbsoluteExpression"/>
+																					<xs:element name="RegexExp"/>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:choice>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="GroupSetting" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="KeySetting">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="DataField" maxOccurs="unbounded">
+																			<xs:annotation>
+																				<xs:documentation>Check table DataPoint for ref</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="ValuePattern">
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="Location" minOccurs="0">
+																									<xs:complexType>
+																										<xs:choice>
+																											<xs:element name="AbsoluteExpression" type="xs:string">
+																												<xs:annotation>
+																													<xs:documentation>Sample: 1,AB</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="FixedLocation">
+																												<xs:annotation>
+																													<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																												</xs:annotation>
+																												<xs:complexType>
+																													<xs:sequence>
+																														<xs:element name="RowNumber" type="xs:int"/>
+																														<xs:element name="ColumnNumber" type="xs:int"/>
+																													</xs:sequence>
+																												</xs:complexType>
+																											</xs:element>
+																										</xs:choice>
+																									</xs:complexType>
+																								</xs:element>
+																								<xs:element name="DataFormatType"/>
+																								<xs:element name="DataFormat" type="xs:string">
+																									<xs:annotation>
+																										<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																								<xs:element name="InvalidValues" type="xs:string">
+																									<xs:annotation>
+																										<xs:documentation>split by',' </xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="DFid" type="xs:string" use="required"/>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="ValueSetting" minOccurs="0">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="DataField" maxOccurs="unbounded">
+																			<xs:annotation>
+																				<xs:documentation>Check table DataPoint for ref</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="ValuePattern">
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="Location" minOccurs="0">
+																									<xs:complexType>
+																										<xs:choice>
+																											<xs:element name="AbsoluteExpression" type="xs:string">
+																												<xs:annotation>
+																													<xs:documentation>Sample: 1, AB </xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="FixedLocation">
+																												<xs:annotation>
+																													<xs:documentation>need special handle if it's a 'single date location' </xs:documentation>
+																												</xs:annotation>
+																												<xs:complexType>
+																													<xs:sequence>
+																														<xs:element name="RowNumber" type="xs:int"/>
+																														<xs:element name="ColumnNumber" type="xs:int"/>
+																													</xs:sequence>
+																												</xs:complexType>
+																											</xs:element>
+																										</xs:choice>
+																									</xs:complexType>
+																								</xs:element>
+																								<xs:element name="DataFormatType" type="xs:int" minOccurs="0"/>
+																								<xs:element name="DataFormat" type="xs:string" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>DD/MM/YYYY, MM/DD/YYYY, ROUND, EXPRESSION etc</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																								<xs:element name="InvalidValues" type="xs:string" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>split by',' </xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="DFid" type="xs:string" use="required"/>
+																				<xs:attribute name="DUid" type="xs:string" use="required"/>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:choice>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

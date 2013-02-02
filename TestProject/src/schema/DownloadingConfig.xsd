@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="DownloadingConfig">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="StartTime" type="xs:time"/>
+				<xs:element name="EndTime" type="xs:time"/>
+				<xs:element name="Frequency" type="xs:integer"/>
+				<xs:element name="DocCategory" type="xs:string"/>
+				<xs:choice>
+					<xs:element name="WebSetting" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="URL" type="xs:string"/>
+								<xs:element name="Encoding">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="UTF-8"/>
+											<xs:enumeration value="GBK"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Structe">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="uniform"/>
+											<xs:enumeration value="nonuniform"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Delimiter">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="^"/>
+											<xs:enumeration value=";"/>
+											<xs:enumeration value=","/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Period">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="StartDate" type="DatePoint"/>
+											<xs:element name="EndDate" type="DatePoint"/>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="SearchDateType" type="DateUnit" minOccurs="0"/>
+								<xs:element name="Step">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="ParseSolution">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:enumeration value="html"/>
+														<xs:enumeration value="soupparser"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="Filter" minOccurs="0" maxOccurs="unbounded">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="SourceType">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:enumeration value="title"/>
+																	<xs:enumeration value="declaredate"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="Operation" type="OperationType"/>
+														<xs:element name="Value"/>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="MappingID" minOccurs="0" maxOccurs="unbounded">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="MarketCode">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:enumeration value="深交所"/>
+																	<xs:enumeration value="上交所固收"/>
+																	<xs:enumeration value="深交所竞价"/>
+																	<xs:enumeration value="银行间"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="DestinationTypes">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:enumeration value="CorpID"/>
+																	<xs:enumeration value="BondID"/>
+																	<xs:enumeration value="BondlistID"/>
+																	<xs:enumeration value="StocklistID"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="Source">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Type">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:enumeration value="公司名称"/>
+																				<xs:enumeration value="债券名称"/>
+																				<xs:enumeration value="债券上市简称"/>
+																				<xs:enumeration value="债券上市代码"/>
+																				<xs:enumeration value="股票上市简称"/>
+																				<xs:enumeration value="股票上市代码"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:sequence>
+																		<xs:element name="Value" maxOccurs="unbounded">
+																			<xs:complexType>
+																				<xs:choice>
+																					<xs:element name="Xpath"/>
+																					<xs:element name="Title"/>
+																					<xs:element name="DefaultValue"/>
+																				</xs:choice>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element name="Pattern"/>
+																	</xs:sequence>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="DocType" minOccurs="0">
+												<xs:complexType>
+													<xs:choice>
+														<xs:element name="Default"/>
+														<xs:element name="Convert"/>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="DocTitleIndex" type="xs:integer" minOccurs="0"/>
+											<xs:element name="DeclearTimeFormat" minOccurs="0"/>
+											<xs:choice>
+												<xs:element name="URL" type="xs:string"/>
+												<xs:element name="XSLT">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="XSLTFile" type="xs:string"/>
+															<xs:element name="Param" minOccurs="0" maxOccurs="unbounded"/>
+															<xs:element name="URLType">
+																<xs:simpleType>
+																	<xs:restriction base="xn:string">
+																		<xs:enumeration value="direct"/>
+																		<xs:enumeration value="indirect"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="URLTransfer" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:choice>
+											<xs:element name="Paging" minOccurs="0">
+												<xs:complexType>
+													<xs:choice>
+														<xs:element name="PageTransfer" minOccurs="0"/>
+														<xs:element name="PageNumberName" minOccurs="0"/>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="DatabaseSetting" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="DatabaseType" type="xs:string"/>
+								<xs:element name="ConnectionString" type="xs:string"/>
+								<xs:element name="DatabaseName" type="xs:string"/>
+								<xs:element name="TableName" type="xs:string"/>
+								<xs:choice>
+									<xs:element name="Sql" type="xs:string">
+									</xs:element>
+									<xs:element name="Macro" type="xs:string"/>
+								</xs:choice>
+								<xs:element name="MonitorColumn" type="xs:string"/>
+								<xs:element name="Delimiter" type="xs:string">
+									<xs:annotation>
+										<xs:documentation>eg: (, ; \n)  default','</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="LocalSetting" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Path" type="xs:string"/>
+								<xs:element name="FilenamePattern" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="DateValue">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateUnit">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="day"/>
+			<xs:enumeration value="month"/>
+			<xs:enumeration value="year"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="DatePoint">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DateType" type="DateType"/>
+				<xs:choice>
+					<xs:element name="Date" type="xs:date"/>
+					<xs:sequence>
+						<xs:element name="DateValue" type="DateValue"/>
+						<xs:element name="DateUnit" type="DateValue"/>
+					</xs:sequence>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DateType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="relatively"/>
+				<xs:enumeration value="absolutely"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="OperationType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="="/>
+				<xs:enumeration value=">"/>
+				<xs:enumeration value="&lt;"/>
+				<xs:enumeration value=">="/>
+				<xs:enumeration value="&lt;="/>
+				<xs:enumeration value="in"/>
+				<xs:enumeration value="not in"/>
+				<xs:enumeration value="contains"/>
+				<xs:enumeration value="not contains"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

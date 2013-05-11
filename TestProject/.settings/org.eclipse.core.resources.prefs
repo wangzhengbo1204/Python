@@ -1,9 +1,10 @@
-#Fri Jan 18 09:48:45 CST 2013
+#Sat May 11 14:22:23 CST 2013
 eclipse.preferences.version=1
 encoding//src/3packages/myparamiko.py=utf-8
 encoding//src/b2q.py=utf-8
 encoding//src/class/sorted.py=utf-8
 encoding//src/db/stock2corp.py=utf-8
+encoding//src/deco/mylocker.py=utf-8
 encoding//src/excel/testwin32.py=utf-8
 encoding//src/misc/testatexit.py=utf-8
 encoding//src/myetl/mycsvetl.py=utf-8
@@ -27,6 +28,10 @@ encoding//src/pdf/test1.py=utf-8
 encoding//src/pdf/test2.py=utf-8
 encoding//src/post/dochouse.py=utf-8
 encoding//src/post/upload.py=utf-8
+encoding//src/pyexcelerator-0.6.4.1/examples/dates.py=windows-1251
+encoding//src/pyexcelerator-0.6.4.1/examples/numbers.py=windows-1251
+encoding//src/pyexcelerator-0.6.4.1/examples/unicode0.py=windows-1251
+encoding//src/pyexcelerator-0.6.4.1/examples/xls2csv.py=windows-1251
 encoding//src/pyke/ask_tty.py=utf-8
 encoding//src/pyke/fact_base.py=utf-8
 encoding//src/pyke/fc_rule.py=utf-8
@@ -70,10 +75,12 @@ encoding//src/testxlrd.py=utf-8
 encoding//src/thread/test2.py=utf-8
 encoding//src/thread/test3.py=utf-8
 encoding//src/thread/testmethod.py=utf-8
+encoding//src/types/testlist.py=utf-8
 encoding//src/vba/callvba.py=utf-8
 encoding//src/vba/pyvba.py=utf-8
 encoding//src/vba/windpicker.py=utf-8
 encoding//src/web/conn.py=utf-8
+encoding//src/web/doublecolor.py=utf-8
 encoding//src/web/httperror.py=utf-8
 encoding//src/web/mycgi.py=utf-8
 encoding//src/web/otsquery.py=utf-8

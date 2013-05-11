@@ -3,7 +3,6 @@
 	<name>TestProject</name>
 	<comment></comment>
 	<projects>
-		<project>Share</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
